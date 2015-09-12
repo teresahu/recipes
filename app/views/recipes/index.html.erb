@@ -1,0 +1,18 @@
+<h1>All Recipes</h1>
+<hr />
+
+<% @recipes.each do |r| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="chef_info center">
+
+      </section>
+    </div>
+    <div class="col-lg-8 well">
+      <h4><%= link_to r.name, " " %></h4>
+      <p><%= r.summary %></p>
+      <p>
+        <span class="quiet"><small><%= time_ago_in_words(r.created_at) %></small></span>
+    </div>
+  </div>
+<% end %>
