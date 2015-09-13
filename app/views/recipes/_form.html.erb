@@ -29,6 +29,11 @@
           <%= f.text_area :description, rows: 10, class: 'form-control' %>
         </div>
       </div>
-    <% end %>
+      <div class="form-group">
+        <div class="col-sm-3 col-sm-offset-2">
+          <%= f.submit(@recipe.new_record? ? 'Create Recipe' : 'Update Recipe', class: 'btn btn-success') %>
+        </div>
+      </div>
+      <% end %>
   </div>
 </div>
