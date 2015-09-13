@@ -8,11 +8,15 @@
         <h5>Chef: <%= r.chef.chefname %></h5>
       </section>
     </div>
-    <div class="col-md-10 well pull-right">
+    <div class="col-md-6 well">
       <h4><%= link_to r.name, recipe_path(r) %></h4>
       <p><%= r.summary %></p>
       <p>
         <span class="quiet"><small><%= time_ago_in_words(r.created_at) %></small></span>
+    </div>
+
+    <div class="col-md-4">
+      <%= image_tag(r.picture.url, size: "250x150", class: "gravatar") if r.picture? %>
     </div>
   </div>
   <hr />
