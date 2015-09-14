@@ -1,18 +1,29 @@
 <%= render 'shared/page_title', title: "All recipes" %>
 
+<%= will_paginate %>
+
 <% @recipes.each do |r| %>
   <div class="row">
     <div class="col-md-2">
       <section class="chef_info center">
         <%= gravatar_for r.chef, size: 100 %>
-        <h5>Chef: <%= r.chef.chefname %></h5>
+        <h5><%= r.chef.chefname %></h5>
       </section>
     </div>
     <div class="col-md-6 well">
       <h4><%= link_to r.name, recipe_path(r) %></h4>
       <p><%= r.summary %></p>
       <p>
-        <span class="quiet"><small><%= time_ago_in_words(r.created_at) %></small></span>
+        <span class="quiet"><small>Created <%= time_ago_in_words(r.created_at) %> ago,</small></span>
+        <span class="quiet"><small>updated <%= time_ago_in_words(r.updated_at) %> ago</small></span>
+        <div class="pull-right">
+          <%= link_to like_recipe_path(r, like: true), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp<%= r.thumbs_up_total %>
+          <% end %>&nbsp&nbsp
+          <%= link_to like_recipe_path(r, like: false), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp<%= r.thumbs_down_total %>
+          <% end %>
+        </div>
     </div>
 
     <div class="col-md-4">
@@ -21,3 +32,5 @@
   </div>
   <hr />
 <% end %>
+
+<%= will_paginate %>
