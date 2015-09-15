@@ -1,7 +1,6 @@
 <%= render 'shared/errors', object: @recipe %>
 
 <div class="row">
-  <div class="well col-md-8 col-md-offset-2">
     <%= form_for(@recipe, html: { multipart: true }, class: 'form-horizontal') do |f| %>
       <div class="form-group">
         <div class="col-sm-2">
@@ -40,7 +39,6 @@
         </div>
       </div>
       <% end %>
-  </div>
 </div>
 
 <script type="text/javascript">

@@ -8,6 +8,12 @@ Rails.application.routes.draw do
       post 'like'
     end
   end
+
+  resources :chefs, except: [:new]
+  get '/register', to: 'chefs#new'
+  get '/login', to: 'logins#new'
+  get '/login', to: 'logins#create'
+  get '/logout', to: 'logins#destroy'
   # get '/recipes', to: 'recipes#index'
   # get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
   # post '/recipes', to: 'recipes#create'
