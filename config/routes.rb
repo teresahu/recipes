@@ -3,16 +3,18 @@ Rails.application.routes.draw do
   root 'pages#home'
 
   get '/home', to: 'pages#home'
-  resources :recipes do
+  resources :recipes, except: [:destroy] do
     member do
       post 'like'
     end
   end
+  delete '/recipes/:id', to: 'recipes#destroy', as: 'destroy_recipe'
 
   resources :chefs, except: [:new]
   get '/register', to: 'chefs#new'
+
   get '/login', to: 'logins#new'
-  get '/login', to: 'logins#create'
+  post '/login', to: 'logins#create'
   get '/logout', to: 'logins#destroy'
   # get '/recipes', to: 'recipes#index'
   # get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
